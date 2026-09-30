@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: Arial, sans-serif;
+        }
+
+        .gallery {
+            width: 760px;
+            height: 300px;
+            position: relative;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .card {
+            position: absolute;
+            bottom: 0;
+            overflow: hidden;
+            border-radius: 28px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.35s ease;
+            user-select: none;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.36), rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.02));
+        }
+
+        .card.large {
+            left: 130px;
+            width: 470px;
+            height: 260px;
+            z-index: 3;
+        }
+
+        .card.left {
+            left: 0;
+            width: 120px;
+            height: 260px;
+            z-index: 2;
+            transform: scale(0.95);
+            opacity: 0.98;
+        }
+
+        .card.right {
+            right: 0;
+            width: 120px;
+            height: 260px;
+            z-index: 2;
+            transform: scale(0.95);
+            opacity: 0.98;
+        }
+
+        .card.hidden-left {
+            left: -150px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card.hidden-right {
+            right: -150px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card.one { background-image: url('imgs3/minecraft.jpg'); }
+        .card.two { background-image: url('imgs3/coffee.jpeg'); }
+        .card.three { background-image: url('imgs3/deltarune.jpg'); }
+
+        .info {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.25);
+            border: 2px solid rgba(255,255,255,0.8);
+            color: white;
+            font-size: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .card.one .avatar { background: #73c290; }
+        .card.two .avatar { background: #ca6f9d; }
+        .card.three .avatar { background: #4547ce; }
+
+        .text {
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .name {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .actions {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.18);
+        }
+
+        .card .info {
+            opacity: 1;
+        }
+
+        .card.left .info,
+        .card.right .info {
+            display: none !important;
+        }
+
+        .card.left .actions,
+        .card.right .actions {
+            display: flex !important;
+        }
+
+        .card.large .info {
+            display: flex !important;
+        }
+
+        .card.large .actions {
+            display: none !important;
+        }
+
+        .green { background: #73c290; }
+        .yellow { background: #ca6f9d; }
+        .pink { background: #d88aaa; }
+        .orange { background: #4547ce; }
+        .purple { background: #8c88d7; }
+    </style>
+</head>
+<body>
+    <div class="gallery" id="gallery">
+        <article class="card one large">
+            <div class="info">
+                <div class="avatar">✦</div>
+                <div class="text">
+                    <div class="name">Minecraft</div>
+                    <div class="subtitle">Jogo de exploração e aventura</div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="dot green">✦</div>
+            </div>
+        </article>
+
+        <article class="card two left">
+            <div class="info">
+                <div class="avatar">✦</div>
+                <div class="text">
+                    <div class="name">Coffee</div>
+                    <div class="subtitle">Jogo de diálogo e relaxamento</div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="dot yellow">✦</div>
+            </div>
+        </article>
+
+        <article class="card three right">
+            <div class="info">
+                <div class="avatar">✦</div>
+                <div class="text">
+                    <div class="name">Deltarune</div>
+                    <div class="subtitle">Jogo de RPG e história</div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="dot orange">✦</div>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        const cards = Array.from(document.querySelectorAll('.card'));
+        let activeIndex = 0;
+        let startX = 0;
+        let dragging = false;
+
+        function updateLayout() {
+            cards.forEach((card, index) => {
+                card.classList.remove('large', 'left', 'right', 'hidden-left', 'hidden-right');
+
+                if (index === activeIndex) {
+                    card.classList.add('large');
+                    card.style.left = '130px';
+                    card.style.right = 'auto';
+                } else if ((index + 1) % cards.length === activeIndex) {
+                    card.classList.add('left');
+                    card.style.left = '0';
+                    card.style.right = 'auto';
+                } else if ((index + 2) % cards.length === activeIndex) {
+                    card.classList.add('right');
+                    card.style.right = '0';
+                    card.style.left = 'auto';
+                } else {
+                    card.classList.add(index < activeIndex ? 'hidden-left' : 'hidden-right');
+                }
+            });
+        }
+
+        function move(direction) {
+            activeIndex = (activeIndex + direction + cards.length) % cards.length;
+            updateLayout();
+        }
+
+        document.getElementById('gallery').addEventListener('pointerdown', (event) => {
+            dragging = true;
+            startX = event.clientX;
+        });
+
+        document.getElementById('gallery').addEventListener('pointerup', (event) => {
+            if (!dragging) return;
+            const diff = event.clientX - startX;
+            if (diff < -60) move(1);
+            if (diff > 60) move(-1);
+            dragging = false;
+        });
+
+        document.getElementById('gallery').addEventListener('pointerleave', () => {
+            dragging = false;
+        });
+
+        updateLayout();
+    </script>
+</body>
+</html>

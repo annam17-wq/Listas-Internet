@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Display Posicionado</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			min-height: 100vh;
+			font-family: Arial, sans-serif;
+		}
+
+		.tela {
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.bloco {
+			position: absolute;
+			width: clamp(70px, 12vw, 150px);
+			aspect-ratio: 1;
+			padding: 3px;
+			font-size: 11px;
+		}
+
+		.bloco-1 {
+			top: 0;
+			left: 0;
+			background: #ff0000;
+		}
+
+		.bloco-2 {
+			top: 0;
+			right: 0;
+			background: #ffff00;
+		}
+
+		.bloco-3 {
+			top: 50%;
+			left: 50%;
+			background: #ff00dc;
+			transform: translate(-50%, -50%);
+		}
+
+		.bloco-4 {
+			bottom: 0;
+			left: 0;
+			background: #0000ff;
+		}
+
+		.bloco-5 {
+			right: 0;
+			bottom: 0;
+			background: #008000;
+		}
+	</style>
+</head>
+<body>
+	<main class="tela">
+		<div class="bloco bloco-1">box1</div>
+		<div class="bloco bloco-2">box2</div>
+		<div class="bloco bloco-3">box3</div>
+		<div class="bloco bloco-4">box4</div>
+		<div class="bloco bloco-5">box5</div>
+	</main>
+</body>
+</html>

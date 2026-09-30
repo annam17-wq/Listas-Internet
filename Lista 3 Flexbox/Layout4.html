@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: Georgia, "Times New Roman", serif;
+			min-height: 100vh;
+		}
+
+		.layout {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		header,
+		footer {
+			height: 79px;
+			flex-shrink: 0;
+			background: #99d400;
+			padding: 13px 12px;
+		}
+
+		main {
+			flex: 1;
+			display: flex;
+		}
+
+		article {
+			flex: 3;
+			padding: 13px 12px;
+		}
+
+		aside,
+		nav {
+			flex: 1;
+			padding: 13px 12px;
+		}
+
+		aside {
+			background: #f7f5d9;
+		}
+
+		nav {
+			background: #d5e6d1;
+		}
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<header>Header</header>
+
+		<main>
+			<article>Article</article>
+			<aside>Aside</aside>
+			<nav>Nav</nav>
+		</main>
+
+		<footer>Footer</footer>
+	</div>
+</body>
+</html>

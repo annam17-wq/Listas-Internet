@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid Layout</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			min-height: 100vh;
+			font-family: Georgia, "Times New Roman", serif;
+		}
+
+		h1 {
+			display: none;
+		}
+
+		.grid-layout {
+			width: 100vw;
+			height: 100vh;
+			padding: 4px;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr) 0.62fr;
+			grid-template-rows: repeat(4, 1fr);
+			gap: 4px;
+			background: #f4f1f4;
+			box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14);
+		}
+
+		.grid-layout > div {
+			min-width: 0;
+		}
+
+		.grid-layout > .laranja {
+			grid-column: 1 / 3;
+			grid-row: 1 / 3;
+			background: #ff9d1e;
+		}
+
+		.grid-layout > .azul {
+			grid-column: 1 / 3;
+			grid-row: 3;
+			background: #b3c5df;
+		}
+
+		.grid-layout > .rosa {
+			grid-column: 3;
+			grid-row: 1 / 4;
+			background: #f2b09f;
+		}
+
+		.grid-layout > .azulzinho {
+			grid-column: 4 / 6;
+			grid-row: 1;
+			background: #c7dedf;
+		}
+
+		.grid-layout > .verde {
+			grid-column: 4;
+			grid-row: 2 / 5;
+			background: #bbce6d;
+		}
+
+		.grid-layout > .amarelo {
+			grid-column: 1 / 4;
+			grid-row: 4;
+			background: #f5b533;
+		}
+
+		.pontos {
+			grid-column: 5;
+			grid-row: 2 / 5;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			padding: 4px 0;
+		}
+
+		.ponto {
+			width: 22px;
+			aspect-ratio: 1;
+			border-radius: 50%;
+		}
+
+		.pontos .laranja { background: #ed936b; }
+		.pontos .rosa { background: #d4a4a5; }
+		.pontos .verde { background: #c8d3a3; }
+		.pontos .roxo { background: #d2c5e9; }
+
+		@media (max-width: 480px) {
+			.ponto {
+				width: 14px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="grid-layout">
+		<div class="laranja"></div>
+		<div class="azul"></div>
+		<div class="rosa"></div>
+		<div class="azulzinho"></div>
+		<div class="verde"></div>
+		<div class="amarelo"></div>
+		<div class="pontos">
+			<span class="ponto laranja"></span>
+			<span class="ponto rosa"></span>
+			<span class="ponto verde"></span>
+			<span class="ponto roxo"></span>
+		</div>
+	</main>
+</body>
+</html>

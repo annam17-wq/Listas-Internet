@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconstrução do Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            width: 320px;
+            height: 560px;
+            background-color: #ffffff;
+            border: 2px solid #a020f0; 
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+      
+        .header {
+            width: 100%;
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .content-skeleton {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+
+        .bar {
+            width: 100%;
+            height: 16px;
+            background-color: #e6e6e6;
+            border-radius: 4px;
+        }
+
+        .footer-skeleton {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            background-color: #e6e6e6;
+            border-radius: 50%;
+        }
+
+        .small-bar {
+            width: 50px;
+            height: 14px;
+            background-color: #e6e6e6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            Company Logo
+        </div>
+        
+        <div class="content-skeleton">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <div class="footer-skeleton">
+            <div class="circle"></div>
+            <div class="small-bar"></div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Barquinho animado</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			min-height: 100vh;
+			overflow: hidden;
+			font-family: Arial, sans-serif;
+		}
+
+		.cena {
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			background: linear-gradient(#dff5ff 0%, #b9e8f7 62%, #7ecde8 62%, #7ecde8 100%);
+		}
+
+		.nuvem {
+			position: absolute;
+			top: 15%;
+			left: -180px;
+			width: 180px;
+			height: 48px;
+			border-radius: 40px;
+			background: rgba(255, 255, 255, 0.9);
+			box-shadow: 42px -20px 0 8px rgba(255, 255, 255, 0.9),
+						92px -8px 0 2px rgba(255, 255, 255, 0.9);
+			animation: atravessar-ceu 24s linear infinite;
+		}
+
+		.mar {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			height: 38%;
+			overflow: hidden;
+			background: #4162ff;
+		}
+
+		.mar::before,
+		.mar::after {
+			content: "";
+			position: absolute;
+			right: -5%;
+			left: -5%;
+			height: 35px;
+			border-radius: 50%;
+			background: #4162ff;
+			box-shadow: 0 10px 0 4px rgba(255, 255, 255, 0.17),
+						0 22px 0 8px rgba(255, 255, 255, 0.1);
+		}
+
+		.mar::before {
+			top: -15px;
+			animation: ondas 5s ease-in-out infinite;
+		}
+
+		.mar::after {
+			top: 90px;
+			opacity: 0.65;
+			animation: ondas 7s ease-in-out infinite reverse;
+		}
+
+		.barco {
+			position: absolute;
+			z-index: 2;
+			bottom: 28%;
+			left: 0;
+			font-size: clamp(56px, 9vw, 110px);
+			line-height: 1;
+			animation: navegar 14s linear infinite, balancar 2s ease-in-out infinite;
+		}
+
+		@keyframes atravessar-ceu {
+			from {
+				transform: translateX(0);
+			}
+			to {
+				transform: translateX(calc(100vw + 380px));
+			}
+		}
+
+		@keyframes navegar {
+			from {
+				left: -130px;
+			}
+			to {
+				left: calc(100vw + 30px);
+			}
+		}
+
+		@keyframes balancar {
+			0%, 100% {
+				margin-bottom: 0;
+				transform: rotate(-3deg);
+			}
+			50% {
+				margin-bottom: 10px;
+				transform: rotate(3deg);
+			}
+		}
+
+		@keyframes ondas {
+			0%, 100% {
+				transform: translateX(-3%);
+			}
+			50% {
+				transform: translateX(3%);
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="cena" aria-label="Cena de um barquinho navegando no mar">
+		<div class="nuvem" aria-hidden="true"></div>
+		<div class="mar" aria-hidden="true"></div>
+		<div class="barco" role="img" aria-label="Barquinho">⛵</div>
+	</main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+   <style>
+      /*regra 1*/ li{color:red;}
+      /*regra 2*/ .churras{color:green;}
+      /*regra 3*/ .fruta{color:gray}
+      /*regra 4*/ li+li.churras{color: black;}
+      /*regra 5*/ .churras[draggable="true"]{color: magenta;}
+      /*regra 6*/ #lip1,#lip2,#lip3{color:blue}
+      /*regra 7*/ #lip3.fruta{color:orange}
+      /*regra 8*/ ol>li.churras#lip5{color:purple}
+   </style>
+</head>
+<body>   
+   <ol>
+   <!--item 1--> <li id="lip0">Abacaxi</li>
+   <!--item 2--> <li           class="fruta">Melão</li>
+   <!--item 3--> <li id="lip2" class="fruta">Pera</li>
+   <!--item 4--> <li id="lip3" class="fruta">Uva</li>
+   <!--item 5--> <li id="lip4" class="fruta">Maçã</li>
+   <!--item 6--> <li           class="churras">Carne</li>
+   <!--item 7--> <li           class="churras">Linguiça</li>
+   <!--item 8--> <li id="lip7" class="churras" draggable="true">Pão de alho</li>
+   </ol>   
+
+<h1>Comentários sobre a lista acima</h1>
+<p>No item 1, a palavra ficou vermelha pois a regra 1 diz que todo "li" tem cor vermelha. O id que acompanha ele não existe regra sobre.</p>
+<p>No item 2, a palavra ficou cinza pois a regra 3 diz que todo "li" com a classe "fruta" tem cor cinza, e ele anula a regra 1 pois a 
+classe tem mais especificidade que tag.</p>
+<p>No item 3, a palavra ficou azul pois a regra 6 diz que todo "li" com o id "lip2" tem cor azul, e ele anula a regra 1 e 3 pois o id tem mais
+especificidade que a classe e do que a tag.</p>
+<p>No item 4, a palavra ficou laranja pois a regra 7 diz que todo "li" com o id "lip3" e a classe "fruta" tem cor laranja. A combinação de seletores
+resulta em maior especificidade.</p>
+<p>No item 5, a palavra ficou cinza pois a regra 3 diz que todo "li" com a classe "fruta" tem cor cinza, e ele anula a regra 1 pois a 
+classe tem mais especificidade que tag.</p>
+<p>No item 6, a palavra ficou preta pois a regra 4 diz que todo "li" que tem a classe "churras" tem cor preta.</p>
+<p>No item 7, a palavra ficou preta pois a regra 4 diz que todo "li" que tem a classe "churras" tem cor preta.</p></p>
+<p>No item 8, a palavra ficou magenta pois o item possui o id "lip7" e a classe churras e o atributo draggable com valor "true" ao mesmo tempo.</p>
+
+
+</body>
+</html>
