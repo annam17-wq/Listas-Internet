@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ededed;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      grid-template-rows: 1fr 1.2fr;
+      gap: 10px;
+      padding: 10px;
+      background: transparent;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.3rem, 2vw, 2.2rem);
+      color: #fff;
+      background: #5d5d5d;
+      border: 2px solid #2b2b2b;
+    }
+
+    .box, .mini {
+      font-family: Georgia, serif;
+    }
+
+    .a {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      width: 80%;
+      height: 60%;
+      justify-self: start;
+      align-self: start;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 10px;
+      background: #4d4d4d;
+    }
+
+    .b {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      width: 50%;
+      height: 60%;
+      justify-self: end;
+      align-self: start;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 10px;
+      background: #4d4d4d;
+    }
+
+    .c {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      width: 45%;
+      height: 130%;
+      justify-self: start;
+      align-self: end;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 10px;
+      background: #4d4d4d;
+    }
+
+    
+
+    .mini-grid {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      display: grid;
+      grid-template-columns: 1fr 1.9fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      width: 190%;
+      height: 130%;
+      background: #4d4d4d;
+      padding: 10px;
+      justify-self: end;
+      align-self: end;
+    }
+
+    .mini {
+      background: #b4b4b4;
+      border: 2px solid #2b2b2b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      color: #000;
+    }
+
+    .e { grid-column: 1; grid-row: 1; }
+    .f {
+      grid-column: 2;
+      grid-row: 1;
+      justify-content: flex-start;
+      padding-left: 12px;
+    }
+    .g { grid-column: 3; grid-row: 1; }
+    .m { grid-column: 1; grid-row: 2; }
+    .i {
+      grid-column: 2;
+      grid-row: 2;
+      justify-content: flex-start;
+      padding-left: 12px;
+    }
+    .j { grid-column: 3; grid-row: 2; }
+
+    .a, .b, .c {
+      font-size: 1.8rem;
+      color: rgba(255,255,255,0.9);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="box a">A</div>
+    <div class="box b">B</div>
+
+    <div class="box c">C</div>
+
+    <div class="mini-grid">
+      <div class="mini e">E</div>
+      <div class="mini f">F</div>
+      <div class="mini g">G</div>
+      <div class="mini m">M</div>
+      <div class="mini i">I</div>
+      <div class="mini j">J</div>
+    </div>
+  </div>
+</body>
+</html>

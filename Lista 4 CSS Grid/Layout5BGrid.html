@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Caderno Web | Conteúdos</title>
+	<style>
+		:root {
+			--ink: #242a2b;
+			--line: #f7f6f2;
+			--orange: #f59a24;
+			--peach: #efb5a4;
+			--teal: #c6dfdc;
+			--blue: #b5c9df;
+			--yellow: #f2b536;
+			--green: #b9cb73;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			min-width: 320px;
+			min-height: 100vh;
+			margin: 0;
+			background: #f1f1ee;
+			color: var(--ink);
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.page {
+			display: grid;
+			width: min(100% - 40px, 1040px);
+			min-height: 100vh;
+			margin-inline: auto;
+			align-content: center;
+			padding-block: 34px;
+		}
+
+		.intro {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 20px;
+			margin-bottom: 14px;
+		}
+
+		.eyebrow {
+			display: block;
+			margin-bottom: 6px;
+			color: #53615e;
+			font-size: 0.75rem;
+			font-weight: 700;
+		}
+
+		h1 { margin: 0; font-size: 1.8rem; line-height: 1.15; }
+
+		.intro p {
+			max-width: 28rem;
+			margin: 0;
+			color: #4d5855;
+			font-size: 0.95rem;
+			line-height: 1.45;
+			text-align: right;
+		}
+
+		.topic-grid {
+			display: grid;
+			min-height: 470px;
+			aspect-ratio: 1.75;
+			grid-template-columns: 1.28fr 0.88fr 0.96fr 0.42fr;
+			grid-template-rows: 1.2fr 1fr 0.76fr;
+			grid-template-areas:
+				"web animate position position"
+				"html animate flex grid"
+				"css css flex grid";
+			gap: 6px;
+			padding: 6px;
+			background: var(--line);
+		}
+
+		.tile {
+			position: relative;
+			display: flex;
+			min-width: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: space-between;
+			overflow: hidden;
+			padding: clamp(14px, 2.1vw, 24px);
+			border: 2px solid var(--line);
+			color: var(--ink);
+			text-decoration: none;
+			transition: filter 150ms ease, transform 150ms ease;
+		}
+
+		.tile:hover { filter: saturate(1.08); transform: translateY(-2px); }
+		.tile:focus-visible { z-index: 1; outline: 3px solid var(--ink); outline-offset: 2px; }
+		.tile-kicker { font-size: 0.7rem; font-weight: 700; }
+		.tile h2 { margin: 0 0 5px; font-size: clamp(1.2rem, 2vw, 1.75rem); line-height: 1.1; }
+		.tile p { max-width: 24rem; margin: 0; font-size: 0.84rem; line-height: 1.35; }
+
+		.web { grid-area: web; background: var(--orange); }
+		.html { grid-area: html; background: var(--blue); }
+		.css { grid-area: css; background: var(--yellow); }
+		.animate { grid-area: animate; background: var(--peach); }
+		.position { grid-area: position; background: var(--teal); }
+		.flex { grid-area: flex; background: var(--green); }
+		.web .tile-copy { max-width: 62%; }
+
+		.study-photo {
+			position: absolute;
+			right: 14px;
+			bottom: 14px;
+			width: clamp(58px, 9vw, 92px);
+			aspect-ratio: 1;
+			border: 3px solid rgba(255, 255, 255, 0.8);
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.grid-link {
+			grid-area: grid;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			background: #f9f8f5;
+			text-align: center;
+		}
+
+		.grid-link .tile-copy { display: grid; justify-items: center; gap: 5px; }
+		.grid-dots { display: grid; grid-template-columns: repeat(2, 14px); gap: 5px; }
+		.grid-dots span { width: 14px; aspect-ratio: 1; border-radius: 50%; background: #ed8d61; }
+		.grid-dots span:nth-child(2) { background: #c9949b; }
+		.grid-dots span:nth-child(3) { background: #aab976; }
+		.grid-dots span:nth-child(4) { background: #b7a8cf; }
+
+		.page-footer { margin-top: 12px; color: #606866; font-size: 0.75rem; }
+
+		@media screen and (max-width: 700px) {
+			.page { width: min(100% - 24px, 540px); padding-block: 22px; }
+			.intro { align-items: flex-start; flex-direction: column; gap: 7px; }
+			h1 { font-size: 1.55rem; }
+			.intro p { text-align: left; }
+			.topic-grid {
+				min-height: 0;
+				aspect-ratio: auto;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				grid-template-rows: repeat(4, minmax(132px, auto));
+				grid-template-areas:
+					"web html"
+					"animate animate"
+					"position flex"
+					"css grid";
+			}
+			.web .tile-copy { max-width: 72%; }
+			.grid-link { flex-direction: row; justify-content: space-between; text-align: left; }
+			.grid-link .tile-copy { justify-items: start; }
+		}
+
+		@media screen and (max-width: 600px) {
+			.page { width: min(100% - 20px, 390px); }
+			.topic-grid {
+				grid-template-columns: minmax(0, 1fr);
+				grid-template-rows: repeat(7, minmax(112px, auto));
+				grid-template-areas:
+					"web"
+					"html"
+					"css"
+					"animate"
+					"position"
+					"flex"
+					"grid";
+			}
+			.study-photo { width: 68px; }
+			.tile p { font-size: 0.9rem; }
+		}
+	</style>
+</head>
+<body>
+	<main class="page">
+		<header class="intro">
+			<div>
+				<span class="eyebrow">CADERNO DE ESTUDOS</span>
+				<h1>Conteúdos de Web</h1>
+			</div>
+			<p>Materiais e exemplos dos assuntos estudados em aula.</p>
+		</header>
+
+		<nav class="topic-grid" aria-label="Conteúdos estudados">
+			<a class="tile web" href="../index.html">
+				<span class="tile-kicker">01 / FUNDAMENTOS</span>
+				<span class="tile-copy"><h2>WEB</h2><p>Internet, páginas e navegação.</p></span>
+				<img class="study-photo" src="imgs5/pessoa-estudando.jpg" alt="Pessoa estudando em um caderno" />
+			</a>
+			<a class="tile html" href="../Programa-o-inter/Lista%201%20HTML/4_curriculo.html">
+				<span class="tile-kicker">02 / MARCAÇÃO</span>
+				<span class="tile-copy"><h2>HTML</h2><p>Estrutura e conteúdo das páginas.</p></span>
+			</a>
+			<a class="tile css" href="../Lista%202%20CSS/1-seletores.html">
+				<span class="tile-kicker">03 / ESTILO</span>
+				<span class="tile-copy"><h2>CSS</h2><p>Seletores, cores e apresentação visual.</p></span>
+			</a>
+			<a class="tile animate" href="../Lista%202%20CSS/6-barquinho.html">
+				<span class="tile-kicker">04 / MOVIMENTO</span>
+				<span class="tile-copy"><h2>Animate</h2><p>Animações CSS aplicadas a uma cena em movimento.</p></span>
+			</a>
+			<a class="tile position" href="../Lista%202%20CSS/4c-display-.html">
+				<span class="tile-kicker">05 / POSICIONAMENTO</span>
+				<span class="tile-copy"><h2>Position</h2><p>Posicionamento relativo e absoluto de elementos.</p></span>
+			</a>
+			<a class="tile flex" href="../Lista%203%20Flexbox/Layout1.html">
+				<span class="tile-kicker">06 / ALINHAMENTO</span>
+				<span class="tile-copy"><h2>Flex</h2><p>Organização de elementos com Flexbox.</p></span>
+			</a>
+			<a class="tile grid-link" href="Layout1Grid.html">
+				<span class="tile-copy"><span class="tile-kicker">07 / ESTRUTURA</span><h2>Grid</h2><p>Linhas, colunas e áreas.</p></span>
+				<span class="grid-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+			</a>
+		</nav>
+
+		<footer class="page-footer">Materiais de HTML e CSS</footer>
+	</main>
+</body>
+</html>

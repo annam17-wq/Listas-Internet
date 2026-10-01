@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Layout Responsivo</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-width: 320px;
+			min-height: 100vh;
+			background: #ededed;
+			color: #171717;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.layout {
+			display: grid;
+			width: 100%;
+			min-height: 100vh;
+			padding: 10px;
+			gap: 4px;
+			grid-template-columns: minmax(56px, 0.7fr) minmax(0, 4.6fr) minmax(56px, 0.7fr);
+			grid-template-rows: 58px minmax(0, 1fr) 40px;
+			grid-template-areas:
+				"header header header"
+				"left content right"
+				"footer footer footer";
+		}
+
+		.area {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 0;
+			border: 2px solid #f7f7f7;
+			border-radius: 4px;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.header {
+			grid-area: header;
+			background: #efb400;
+		}
+
+		.left-aside {
+			grid-area: left;
+			align-items: flex-start;
+			justify-content: flex-start;
+			padding: 8px;
+			background: #0a9a58;
+			font-size: 0.8rem;
+		}
+
+		.content-stack {
+			display: grid;
+			min-width: 0;
+			min-height: 0;
+			gap: 4px;
+			grid-area: content;
+			grid-template-rows: 42px minmax(0, 1fr) 40px;
+		}
+
+		.banner {
+			background: #d83c32;
+		}
+
+		.main-content {
+			flex-direction: column;
+			gap: 8px;
+			padding: 16px;
+			background: #3f7fe8;
+		}
+
+		.main-content h1 {
+			margin: 0;
+			font-size: 1.25rem;
+		}
+
+		.dimensions {
+			margin: 0;
+			font-size: 1rem;
+		}
+
+		.right-aside {
+			grid-area: right;
+			align-items: flex-start;
+			justify-content: flex-start;
+			padding: 8px;
+			background: #efb400;
+			font-size: 0.8rem;
+		}
+
+		.low-content {
+			background: #0a9a58;
+			font-size: 0.8rem;
+		}
+
+		.footer {
+			grid-area: footer;
+			background: #3f7fe8;
+		}
+
+		@media screen and (max-width: 700px) {
+			.layout {
+				grid-template-columns: minmax(0, 1fr);
+				grid-template-rows: 54px 42px 26px minmax(320px, 1fr) 26px 42px 42px;
+				grid-template-areas:
+					"header"
+					"banner"
+					"left"
+					"main"
+					"right"
+					"low"
+					"footer";
+			}
+
+			.content-stack {
+				display: contents;
+			}
+
+			.left-aside,
+			.right-aside {
+				padding: 3px 8px;
+				font-size: 0.75rem;
+			}
+
+			.banner {
+				grid-area: banner;
+			}
+
+			.main-content {
+				grid-area: main;
+			}
+
+			.right-aside {
+				grid-area: right;
+			}
+
+			.low-content {
+				grid-area: low;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="layout">
+		<header class="area header">Header</header>
+		<aside class="area left-aside">Left Aside</aside>
+		<section class="content-stack" aria-label="Conteúdo principal">
+			<div class="area banner">Banner</div>
+			<section class="area main-content">
+				<h1>Main Content</h1>
+				<p class="dimensions">Width: <span id="main-width">0</span>, Height: <span id="main-height">0</span></p>
+			</section>
+			<div class="area low-content">Low Content</div>
+		</section>
+		<aside class="area right-aside">Right Aside</aside>
+		<footer class="area footer">Footer</footer>
+	</main>
+	<script>
+		const mainContent = document.querySelector(".main-content");
+		const mainWidth = document.querySelector("#main-width");
+		const mainHeight = document.querySelector("#main-height");
+
+		const updateDimensions = () => {
+			const bounds = mainContent.getBoundingClientRect();
+			mainWidth.textContent = Math.round(bounds.width);
+			mainHeight.textContent = Math.round(bounds.height);
+		};
+
+		new ResizeObserver(updateDimensions).observe(mainContent);
+	</script>
+</body>
+</html>
